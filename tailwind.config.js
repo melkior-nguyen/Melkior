@@ -4,7 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-text": "#62636C"
+        "primary": "#011F4B",
+        "interactive": "#EBF3FE",
+        "appBorder": "#B4D4FF",
+        "appWhite": "#FDFDFE"
       }
     },
   },

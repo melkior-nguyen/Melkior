@@ -8,7 +8,7 @@ function App() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className={`bg-gradient-to-b ${lightBg} h-screen p-3 flex flex-col`}>
+      <div className={`bg-gradient-to-b ${lightBg} h-screen w-screen p-3 flex flex-col`}>
         <AppHeader />
         <Outlet />
       </div>

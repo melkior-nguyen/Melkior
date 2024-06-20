@@ -10,7 +10,7 @@
 
 @layer base {
   html {
-    @apply text-primary-text text-sm
+    @apply text-sm
   }
 }
 

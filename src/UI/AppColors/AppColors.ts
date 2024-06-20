@@ -19,6 +19,6 @@ export const appColors = {
   },
   icon: {
     primary: "#1E1F24",
-    hover: "#EFF0F3",
+    hover: "#dee5f3",
   },
 };
