@@ -4,12 +4,13 @@
   list-style     : none;
   border         : none;
   outline        : none;
-  text-decoration: none
+  text-decoration: none;
+  box-sizing     : border-box
 }
 
 @layer base {
   html {
-    @apply text-blue-400
+    @apply text-primary-text text-sm
   }
 }
 
