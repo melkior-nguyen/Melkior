@@ -7,7 +7,8 @@ export default {
         "primary": "#011F4B",
         "interactive": "#EBF3FE",
         "appBorder": "#B4D4FF",
-        "appWhite": "#FDFDFE"
+        "appWhite": "#FDFDFE",
+        "grayHover": "#DEE5F3"
       }
     },
   },

@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { appColors } from "../../UI/AppColors/AppColors";
 
 const AppIcon = ({
   icon,
@@ -12,7 +11,7 @@ const AppIcon = ({
 }) => {
   return (
     <div
-      className={`${tailwindClass} h-8 w-8 cursor-pointer hover:bg-[${appColors.icon.hover}] rounded flex justify-center items-center`}
+      className={`${tailwindClass} transition-all h-8 w-8 cursor-pointer hover:bg-grayHover rounded flex justify-center items-center`}
       onClick={handleClick}
     >
       {icon}

@@ -1,10 +1,13 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Logo from "../../SVGs/LogoIcon";
+import { useLocation, useNavigate } from "react-router-dom";
+import Logo from "../../SVGs/DarkLogoIcon";
 import MenuIcon from "../../SVGs/MenuIcon";
 import { useState } from "react";
 import CloseIcon from "../../SVGs/CloseIcon";
 import AppButton from "../AppButton/AppButton";
 import { motion, AnimatePresence } from "framer-motion";
+import AppIcon from "../AppIcon/AppIcon";
+import GithubIcon from "../../SVGs/GithubIcon";
+import SunIcon from "../../SVGs/SunIcon";
 
 const linkList = [
   {
@@ -41,7 +44,7 @@ const AppHeader = () => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   return (
-    <header className="flex justify-between items-center mb-3 select-none">
+    <header className="flex justify-between items-center select-none max-w-[1440px] w-full">
       <motion.div
         className="cursor-pointer"
         initial={{ x: "100%", opacity: 0 }}
@@ -52,9 +55,8 @@ const AppHeader = () => {
       >
         <Logo />
       </motion.div>
-
       <motion.nav
-        className="hidden md:flex gap-3"
+        className="hidden md:flex gap-2"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
       >
@@ -63,7 +65,9 @@ const AppHeader = () => {
             key={`route-${i}`}
             whileTap={{ scale: 0.95 }}
             className={`px-3 py-1 rounded-full cursor-pointer transition-all  ${
-              path.pathname === link.to ? "bg-appWhite text-primary" : ""
+              path.pathname === link.to
+                ? "bg-primary text-appWhite"
+                : "hover:bg-grayHover"
             }`}
             style={{ height: "max-content" }}
             onClick={() => {
@@ -76,11 +80,12 @@ const AppHeader = () => {
       </motion.nav>
 
       <motion.div
-        className="hidden md:flex"
+        className="hidden md:flex gap-2"
         initial={{ x: "-100%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
       >
-        dark mode
+        <AppIcon icon={<GithubIcon />} handleClick={() => {}} />
+        <AppIcon icon={<SunIcon />} handleClick={() => {}} />
       </motion.div>
 
       {/* mobile menu icon */}
@@ -119,25 +124,35 @@ const AppHeader = () => {
             handleClick={() => setOpenMenu(false)}
           />
         </div>
-        <div className=" h-full flex flex-col gap-3">
+        <ul className=" h-full flex flex-col gap-3">
           {linkList.map((link, i) => (
-            <Link
-              to={link.to}
+            <motion.li
+              initial={{ y: "200%", x: "50%", opacity: 0 }}
+              whileInView={{ y: 0, x: 0, opacity: 1 }}
+              transition={{ delay: i / 20, duration: 0.25 }}
               className={`p-3 rounded ${
                 path.pathname === link.to
                   ? "border border-appBorder bg-interactive "
                   : "hover:bg-blue-100"
               }`}
               key={`route-${i}`}
-              onClick={() => setOpenMenu(false)}
+              onClick={() => {
+                navigate(link.to);
+                setOpenMenu(false);
+              }}
             >
               {link.label}
-            </Link>
+            </motion.li>
           ))}
-        </div>
-        <div className="border-appBorder flex justify-center items-center border p-3 rounded bg-primary text-appWhite">
+        </ul>
+        <motion.div
+          initial={{ y: "50%", x: 0, opacity: 0 }}
+          whileInView={{ y: 0, x: 0, opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.25 }}
+          className="border-appBorder flex justify-center items-center border p-3 rounded bg-primary text-appWhite"
+        >
           Dark mode
-        </div>
+        </motion.div>
       </motion.div>
     </header>
   );
